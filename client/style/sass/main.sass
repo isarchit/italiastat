@@ -1,0 +1,43 @@
+$dim: #CCC
+
+html, body
+    margin: 0px
+    padding: 0px
+    width: 100%
+    height: 100%
+    
+svg
+    .regione, .provincia, .comune
+        fill: #999
+        stroke: white
+        cursor: pointer
+        stroke-linejoin: round
+        
+    .regione
+        stroke-width: 0.25
+    .provincia
+        stroke-width: 0.1
+    .comune
+        stroke-width: 0.02
+        
+    .regione.active, .provincia.active
+        fill: none
+        
+    .zoom_regione
+        .regione:not(.active)
+            fill: $dim
+        
+    .zoom_provincia
+        .regione
+            fill: none
+        .provincia:not(.active)
+            fill: $dim
+            
+    .zoom_comune
+        .regione
+            fill: none
+        .provincia
+            fill: none
+        .comune:not(.active)
+            fill: $dim
+            

@@ -1,0 +1,43 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+svg .regione, svg .provincia, svg .comune {
+  fill: #999999;
+  stroke: white;
+  cursor: pointer;
+  stroke-linejoin: round;
+}
+svg .regione {
+  stroke-width: 0.25;
+}
+svg .provincia {
+  stroke-width: 0.1;
+}
+svg .comune {
+  stroke-width: 0.02;
+}
+svg .regione.active, svg .provincia.active {
+  fill: none;
+}
+svg .zoom_regione .regione:not(.active) {
+  fill: #cccccc;
+}
+svg .zoom_provincia .regione {
+  fill: none;
+}
+svg .zoom_provincia .provincia:not(.active) {
+  fill: #cccccc;
+}
+svg .zoom_comune .regione {
+  fill: none;
+}
+svg .zoom_comune .provincia {
+  fill: none;
+}
+svg .zoom_comune .comune:not(.active) {
+  fill: #cccccc;
+}

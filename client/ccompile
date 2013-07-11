@@ -1,0 +1,6 @@
+echo 'Compiling CoffeeScript...'
+rm -Rf js
+coffee --compile --output js coffee
+
+echo 'Compiling SASS...'
+sass --force --update style/sass:style/css --style expanded
