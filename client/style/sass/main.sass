@@ -1,4 +1,7 @@
-$dim: #CCC
+$background: white
+$borders: white
+$dimness: 0.7
+$dim: rgba($background, $dimness)
 
 html, body
     margin: 0px
@@ -7,18 +10,22 @@ html, body
     height: 100%
     
 svg
+    background: $background
+    
     .regione, .provincia, .comune
-        fill: #999
-        stroke: white
+        stroke: $borders
         cursor: pointer
         stroke-linejoin: round
         
+    .regione, .provincia
+        fill: transparent
+        
     .regione
-        stroke-width: 0.25
+        stroke-width: 0.3
     .provincia
         stroke-width: 0.1
     .comune
-        stroke-width: 0.02
+        stroke-width: 0.04
         
     .regione.active, .provincia.active
         fill: none
@@ -39,5 +46,5 @@ svg
         .provincia
             fill: none
         .comune:not(.active)
-            fill: $dim
+            opacity: 1 - $dimness
             

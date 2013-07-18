@@ -1,7 +1,8 @@
 (function() {
 
   $(function() {
-    var centered, italy, path_generator, projection, svg, zoom_to;
+    var centered, heat_color, italy, path_generator, projection, svg, zoom_to;
+    heat_color = d3.scale.linear().domain([0, 1]).range(['purple', 'orange']).interpolate(d3.interpolateHcl);
     svg = d3.select('body').append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', '-200 -200 400 400');
     projection = d3.geo.albers().center([14, 34]).rotate([-14, 0]).parallels([38, 61]).scale(2100);
     path_generator = d3.geo.path().projection(projection);
@@ -42,7 +43,9 @@
       regioni = topojson.feature(data, data.objects.reg2011_g);
       province = topojson.feature(data, data.objects.prov2011_g);
       comuni = topojson.feature(data, data.objects.com2011_g);
-      italy.selectAll('.comune').data(comuni.features).enter().append('path').attr('class', 'comune').attr('d', path_generator).on('click', zoom_to).append('title').text(function(d) {
+      italy.selectAll('.comune').data(comuni.features).enter().append('path').attr('class', 'comune').attr('d', path_generator).attr('fill', function(d) {
+        return heat_color(Math.random());
+      }).on('click', zoom_to).append('title').text(function(d) {
         return d.properties.NOME_COM;
       });
       italy.selectAll('.provincia').data(province.features).enter().append('path').attr('class', 'provincia').attr('d', path_generator).on('click', zoom_to).append('title').text(function(d) {

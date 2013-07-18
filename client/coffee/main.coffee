@@ -1,4 +1,9 @@
 $ ->
+    heat_color = d3.scale.linear()
+        .domain([0,1])
+        .range(['purple', 'orange'])
+        .interpolate(d3.interpolateHcl)
+    
     svg = d3.select('body').append('svg')
         .attr('width', '100%')
         .attr('height', '100%')
@@ -62,6 +67,7 @@ $ ->
           .enter().append('path')
             .attr('class', 'comune')
             .attr('d', path_generator)
+            .attr('fill', (d) -> heat_color(Math.random()))
             .on('click', zoom_to)
           .append('title')
             .text((d) -> d.properties.NOME_COM)
